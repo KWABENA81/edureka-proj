@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sas</groupId>
-    <artifactId>student-ms</artifactId>
+    <artifactId>studentms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>student-ms</name>
-    <description>student-ms</description>
+    <name>studentms</name>
+    <description>studentms</description>
     <properties>
         <java.version>11</java.version>
     </properties>

@@ -1,7 +1,7 @@
 package com.sas.studentms.api;
 
 import com.sas.studentms.model.Student;
-import com.sas.studentms.repo.StudentRepository;
+import com.sas.studentms.service.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -20,11 +20,11 @@ import java.util.Optional;
 public class StudentController {
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
 
-    @Autowired
-    private StudentRepository studentRepository;
-
 //    @Autowired
-//    private StudentService studentService;
+//    private StudentRepository studentRepository;
+
+    @Autowired
+    private StudentService studentService;
 
     @GetMapping("/studentGetTest")
     public String getStudentResourceTest() {
@@ -33,15 +33,15 @@ public class StudentController {
 
     @GetMapping("/students")
     public List<Student> getAllStudents() {
-        return studentRepository.findAll();
+        return studentService.findAll().stream().collect(Collectors.toList());
     }
 
     @GetMapping("/students/{id}")
     public ResponseEntity<Student> findStudentById(@PathVariable Integer id) {
-        Optional<Student> studentOpt = studentRepository.findById(id);
-        if (studentOpt.isPresent()) {
+        Student studentOpt = studentService.findById(id);
+        if (studentOpt != null) {
             LOGGER.info("Student found with id {}", id);
-            return ResponseEntity.ok(studentOpt.get());
+            return ResponseEntity.ok(studentOpt);
         }
         LOGGER.error("Student not found with id {}", id);
         return ResponseEntity.notFound().build();
@@ -50,7 +50,7 @@ public class StudentController {
 
     @DeleteMapping("/students/{id}")
     public ResponseEntity<Integer> deleteStudentById(@PathVariable Integer id) {
-        boolean isRemoved = studentRepository.delete(id);
+        boolean isRemoved = studentService.delete(id);
         if (!isRemoved) {
             LOGGER.info("Student not found with id {}", id);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -61,11 +61,11 @@ public class StudentController {
 
 
     @GetMapping("/students/{studentid}")
-    public ResponseEntity<Student> findStudentByStudentId(@PathVariable String studentId) {
-        Optional<Student> studentOpt = studentRepository.findByStudentId(studentId);
-        if (studentOpt.isPresent()) {
+    public ResponseEntity<Student> findByStudentId(@PathVariable String studentId) {
+        Student student = studentService.findByStudentId(studentId);
+        if (student != null) {
             LOGGER.info("Student found with student id {}", studentId);
-            return ResponseEntity.ok(studentOpt.get());
+            return ResponseEntity.ok(student);
         }
         LOGGER.error("Student not found with student id {}", studentId);
         return ResponseEntity.notFound().build();
@@ -73,25 +73,23 @@ public class StudentController {
 
     @PostMapping("/student")
     public ResponseEntity<Student> createStudent(@RequestBody Student student) throws URISyntaxException {
-        Student studentSaved = studentRepository.save(student);
-//        Student studentSaved = studentService.save(student);
+        Student studentSaved = studentService.save(student);
         return ResponseEntity.created(new URI(studentSaved.getId().toString())).body(studentSaved);
     }
 
     @PutMapping("/students/{id}")
     public Student updateStudent(@RequestBody Student student, @PathVariable Integer id) {
-        Optional<Student> studentOptional = studentRepository.findById(id);
+        Student student_db = studentService.findById(id);
+        if (student_db != null) {
 
-        if (studentOptional.isPresent()) {
-            Student student1 = studentOptional.get();
-            student1.setFirstName(student.getFirstName());
-            student1.setLastName(student.getLastName());
-            student1.setStudentId(student.getStudentId());
+            student_db.setFirstName(student.getFirstName());
+            student_db.setLastName(student.getLastName());
+            student_db.setStudentId(student.getStudentId());
 
-            return studentRepository.save(student1);
+            return studentService.save(student_db);
         } else {
             student.setId(id);
-            return studentRepository.save(student);
+            return studentService.save(student);
         }
     }
 }
