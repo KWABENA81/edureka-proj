@@ -20,5 +20,5 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query("SELECT s FROM Student s WHERE s.studentId=(:studentId)")
     Optional<Student> findByStudentId(@Param("studentId") String studentId);
 
-    Boolean delete(Integer id);
+    boolean delete(Integer id);
 }

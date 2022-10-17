@@ -1,29 +1,41 @@
 package com.sas.feems.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
 
-@Entity
+
 @Table(name = "FEE")
-public class Fee implements Comparable<Fee> , Serializable {
+@Entity //@Component
+public class Fee implements Comparable<Fee> {
 
     private static final long serialVersionUID = 1L;
+    private String studentId;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
-
     @Column(name = "feetype", nullable = false)
     private String feeType;
-
     @Column(name = "amount", nullable = false)
     private Float amount;
-
     @Column(name = "status", nullable = false)
     private String status;
+    //    @Autowired
+    //private Student student;
 
-    private String studentId;
+
+//    @Autowired
+//    public Fee( Student student) {
+//        this.student = student;
+//    }
+
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 
     public Integer getId() {
         return id;
@@ -57,25 +69,26 @@ public class Fee implements Comparable<Fee> , Serializable {
         this.status = status;
     }
 
-    public String getStudentId() {
-        return studentId;
-    }
+//    @PostConstruct     public void init(){
+//        student.setFee(this);
+//    } public Student getStudent(){
+//        return student;
+//    }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Fee fee)) return false;
-        return getStudentId().equals(fee.getStudentId());
-    }
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "STUDENT_ID"/*, referencedColumnName = "ID"*/)
+//@JsonBackReference//("fee")
+//    private Student student;
+//
+//    public Student getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(Student student) {
+//        this.student = student;
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getStudentId());
-    }
 
     @Override
     public int compareTo(Fee fee) {
@@ -84,14 +97,9 @@ public class Fee implements Comparable<Fee> , Serializable {
 
     @Override
     public String toString() {
-        return "Fee{" +
-                "id=" + id +
-                ", feeType='" + feeType + '\'' +
-                ", amount=" + amount +
-                ", status='" + status + '\'' +
-                ", studentId='" + studentId + '\'' +
-                '}';
+        return "Fee{" + "id=" + id + ", feeType='" + feeType + '\'' + ", amount=" + amount + ", status='" + status + '\'' + '}';
     }
+
 }
 
 

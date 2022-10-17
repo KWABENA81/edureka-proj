@@ -14,14 +14,10 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @RestController
 @RequestMapping("/student")
 public class StudentController {
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
-
-//    @Autowired
-//    private StudentRepository studentRepository;
 
     @Autowired
     private StudentService studentService;

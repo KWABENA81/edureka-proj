@@ -23,7 +23,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public Set<Student> all() {
-        return studentRepository.findAll().stream().collect(Collectors.toSet());
+        return findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
