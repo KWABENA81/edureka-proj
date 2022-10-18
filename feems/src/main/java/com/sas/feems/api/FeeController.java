@@ -29,11 +29,10 @@ public class FeeController {
         return feeService.findAll().stream().collect(Collectors.toList());
     }
 
-//    @GetMapping("/studentId/{sid}")
-//    public List<String> getStudentFees(@PathVariable String sid) {
-//        return feeService.findByStudentId(sid).stream().collect(Collectors.toList());
-//    }
-
+    @GetMapping("/studentId/{sid}")
+    public List<Fee> getStudentFees(@PathVariable String sid) {
+        return feeService.findByStudentId(sid).stream().collect(Collectors.toList());
+    }
 
     @PutMapping("/fees/{id}")
     public Fee updateFee(@RequestBody Fee fee, @PathVariable Integer id) {
