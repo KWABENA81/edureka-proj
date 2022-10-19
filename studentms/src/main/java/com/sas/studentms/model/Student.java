@@ -3,9 +3,7 @@ package com.sas.studentms.model;
 
 import javax.persistence.*;
 
-//@Data
 @Entity
-//@Component
 @Table(name = "STUDENT")
 public class Student implements Comparable<Student> {
     private static final long serialVersionUID = 1L;
@@ -51,26 +49,6 @@ public class Student implements Comparable<Student> {
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
-//    @OneToMany(/*targetEntity = Student.class, */mappedBy = "fee",orphanRemoval = true,
-//            /*fetch = FetchType.LAZY, */cascade = CascadeType.ALL)
-//    @JsonManagedReference//    JsonIgnoreProperties("student")
-//    private List<Fee> fees;
-
-//    public List<Fee> getFees() {
-//        return (fees != null) ? fees : new ArrayList<Fee>();
-//    }
-//
-//    public void setFees(List<Fee> fees) {
-//        this.fees = fees;
-//    }
-//
-//    public void addFee(Fee fee) {
-//        List<Fee> this_fees = this.getFees();
-//        if (!this_fees.contains(fee)) {
-//            this_fees.add(fee);
-//        }
-//        fee.setStudent(this);
-//    }
 
     @Override
     public int compareTo(Student st) {
@@ -84,20 +62,6 @@ public class Student implements Comparable<Student> {
         return value;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Student)) return false;
-//        Student student = (Student) o;
-//        return Objects.equals(getId(), student.getId()) && Objects.equals(getFirstName(),
-//                student.getFirstName()) && getLastName().equals(student.getLastName())
-//                && getStudentId().equals(student.getStudentId());
-//    }
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(getLastName(), getStudentId());
-//    }
 
     @Override
     public String toString() {
@@ -108,6 +72,5 @@ public class Student implements Comparable<Student> {
                 ", studentId='" + studentId + '\'' +
                 '}';
     }
-
 
 }

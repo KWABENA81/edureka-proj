@@ -1,32 +1,32 @@
 package com.sas.feems.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Objects;
 
 
+@Entity
 @Table(name = "FEE")
-@Entity //@Component
 public class Fee implements Comparable<Fee> {
 
     private static final long serialVersionUID = 1L;
-    private String studentId;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false)
     private Integer id;
-    @Column(name = "feetype", nullable = false)
+    @Column(name = "feetype")
     private String feeType;
+    @Column(name = "duedate")
+    private LocalDate dueDate;
     @Column(name = "amount", nullable = false)
     private Float amount;
-    @Column(name = "status", nullable = false)
+
+    @Column(name = "status")
     private String status;
-    //    @Autowired
-    //private Student student;
 
-
-//    @Autowired
-//    public Fee( Student student) {
-//        this.student = student;
-//    }
+    @Column(name = "studentid", nullable = false)
+    private String studentId;
 
 
     public String getStudentId() {
@@ -69,26 +69,30 @@ public class Fee implements Comparable<Fee> {
         this.status = status;
     }
 
-//    @PostConstruct     public void init(){
-//        student.setFee(this);
-//    } public Student getStudent(){
-//        return student;
-//    }
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate feeDate) {
+        this.dueDate = feeDate;
+    }
 
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "STUDENT_ID"/*, referencedColumnName = "ID"*/)
-//@JsonBackReference//("fee")
-//    private Student student;
-//
-//    public Student getStudent() {
-//        return student;
-//    }
-//
-//    public void setStudent(Student student) {
-//        this.student = student;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Fee)) return false;
+        Fee fee = (Fee) o;
+        return Objects.equals(getStudentId(),
+                fee.getStudentId()) && Objects.equals(getFeeType(),
+                fee.getFeeType()) && Objects.equals(getDueDate(),
+                fee.getDueDate()) && Objects.equals(getAmount(), fee.getAmount());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStudentId(), getFeeType(), getDueDate(), getAmount());
+    }
 
     @Override
     public int compareTo(Fee fee) {
@@ -97,7 +101,8 @@ public class Fee implements Comparable<Fee> {
 
     @Override
     public String toString() {
-        return "Fee{" + "id=" + id + ", feeType='" + feeType + '\'' + ", amount=" + amount + ", status='" + status + '\'' + '}';
+        return "Fee{" + "id=" + id + ", feeType='" + feeType + '\''
+                + ", amount=" + amount + ", status='" + status + '\'' + '}';
     }
 
 }
