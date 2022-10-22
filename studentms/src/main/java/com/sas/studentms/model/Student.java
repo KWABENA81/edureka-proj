@@ -11,11 +11,11 @@ public class Student implements Comparable<Student> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
-    @Column(name = "firstname", nullable = false, length = 100)
+    @Column(name = "FIRSTNAME", nullable = false, length = 100)
     private String firstName;
-    @Column(name = "lastname", nullable = false, length = 100)
+    @Column(name = "LASTNAME", nullable = false, length = 100)
     private String lastName;
-    @Column(name = "studentId", nullable = false, unique = true, length = 30)
+    @Column(name = "STUDENTID", nullable = false, unique = true, length = 30)
     private String studentId;
 
     public Integer getId() {
