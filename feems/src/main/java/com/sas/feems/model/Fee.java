@@ -8,34 +8,23 @@ import java.util.Objects;
 @Entity
 @Table(name = "FEE")
 public class Fee implements Comparable<Fee> {
-
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false)
     private Integer id;
-    @Column(name = "feetype")
-    private String feeType;
-    @Column(name = "duedate")
+
+    @Column(name = "DUEDATE")
     private LocalDate dueDate;
-    @Column(name = "amount", nullable = false)
+    @Column(name = "AMOUNT", nullable = false)
     private Float amount;
 
-    @Column(name = "status")
+    @Column(name = "STATUS")
     private String status;
 
-    @Column(name = "studentid", nullable = false)
-    private String studentId;
+    @Column(name = "SID", nullable = false)
+    private String sid;
 
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
 
     public Integer getId() {
         return id;
@@ -43,14 +32,6 @@ public class Fee implements Comparable<Fee> {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getFeeType() {
-        return feeType;
-    }
-
-    public void setFeeType(String feeType) {
-        this.feeType = feeType;
     }
 
     public Float getAmount() {
@@ -77,34 +58,42 @@ public class Fee implements Comparable<Fee> {
         this.dueDate = feeDate;
     }
 
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
+    }
+
+    @Override
+    public int compareTo(Fee fee) {
+        return (this.sid.compareTo(fee.sid) == 0)
+                ? this.dueDate.compareTo(fee.dueDate) : 0;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Fee)) return false;
         Fee fee = (Fee) o;
-        return Objects.equals(getStudentId(),
-                fee.getStudentId()) && Objects.equals(getFeeType(),
-                fee.getFeeType()) && Objects.equals(getDueDate(),
-                fee.getDueDate()) && Objects.equals(getAmount(), fee.getAmount());
+        return getDueDate().equals(fee.getDueDate()) && getStatus().equals(fee.getStatus()) && getSid().equals(fee.getSid());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStudentId(), getFeeType(), getDueDate(), getAmount());
-    }
-
-    @Override
-    public int compareTo(Fee fee) {
-        return 0;
+        return Objects.hash(getDueDate(), getStatus(), getSid());
     }
 
     @Override
     public String toString() {
-        return "Fee{" + "id=" + id + ", feeType='" + feeType + '\''
-                + ", amount=" + amount + ", status='" + status + '\'' + '}';
+        return "Fee{" +
+                "dueDate=" + dueDate +
+                ", amount=" + amount +
+                ", status='" + status + '\'' +
+                ", sid='" + sid + '\'' +
+                '}';
     }
-
 }
 
 

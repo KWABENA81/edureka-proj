@@ -16,15 +16,16 @@ public class StudentService implements IStudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    @Override
-    public boolean delete(Integer id) {
-        return studentRepository.delete(id);
-    }
 
-    @Override
-    public Set<Student> all() {
-        return findAll().stream().collect(Collectors.toSet());
-    }
+//    @Override
+//    public boolean delete(Integer id) {
+//        return studentRepository.delete(id);
+//    }
+
+//    @Override
+//    public Set<Student> all() {
+//        return findAll().stream().collect(Collectors.toSet());
+//    }
 
     @Override
     public Collection<Student> findAll() {
@@ -43,24 +44,24 @@ public class StudentService implements IStudentService {
         return (studentOptional.isPresent()) ? studentOptional.get() : studentOptional.orElseThrow();
     }
 
-    @Override
-    public Student create(Student student) {
-        return (student.getId() == null) ? studentRepository.save(student) : null;
-    }
+//    @Override
+//    public Student create(Student student) {
+//        return (student.getId() == null) ? studentRepository.save(student) : null;
+//    }
 
-    @Override
-    public Student update(Student student) {
-        Optional<Student> studentOptional = studentRepository.findById(student.getId());
-        if (studentOptional.isPresent()) {
-            Student student_db = studentOptional.get();
-
-            student_db.setStudentId(student.getStudentId());
-            student_db.setLastName(student.getLastName());
-            student_db.setFirstName(student.getFirstName());
-            return studentRepository.save(student_db);
-        } else
-            return studentOptional.orElseThrow();
-    }
+//    @Override
+//    public Student update(Student student) {
+//        Optional<Student> studentOptional = studentRepository.findById(student.getId());
+//        if (studentOptional.isPresent()) {
+//            Student student_db = studentOptional.get();
+//
+//            student_db.setStudentId(student.getStudentId());
+//            student_db.setLastName(student.getLastName());
+//            student_db.setFirstName(student.getFirstName());
+//            return studentRepository.save(student_db);
+//        } else
+//            return studentOptional.orElseThrow();
+//    }
 
     public Student save(Student student) {
         return studentRepository.save(student);

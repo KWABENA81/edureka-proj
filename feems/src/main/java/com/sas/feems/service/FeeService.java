@@ -31,8 +31,8 @@ public class FeeService implements IFeeService {
         return feeRepository.findAll();
     }
 
-    public List<Fee> findByStudentId(String sid) {
+    public List<Fee> findBySID(String sid) {
         return findAll().stream()
-                .filter(s -> s.getStudentId().equalsIgnoreCase(sid)).collect(Collectors.toList());
+                .filter(s -> s.getSid().equalsIgnoreCase(sid)).collect(Collectors.toList());
     }
 }
