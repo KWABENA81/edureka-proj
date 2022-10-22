@@ -13,8 +13,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 
 @RestController
-public class StudentClientController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(StudentClientController.class);
+public class StudentClientResource {
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentClientResource.class);
 
     @Autowired
     private RestTemplate restTemplate;
@@ -24,7 +24,7 @@ public class StudentClientController {
             commandProperties = {
                     @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")
             })
-    public Object getStudentsFromStudentms(@PathVariable String id) {
+    public Object getStudentsFGromStudentms(@PathVariable String id) {
         LOGGER.info("About to call studentms");
         return restTemplate.getForObject("http://studentms/students/" + id, Object.class);
     }

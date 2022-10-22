@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/student")
-public class StudentController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
+public class StudentResource {
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentResource.class);
 
     @Autowired
     private StudentService studentService;
@@ -44,16 +44,16 @@ public class StudentController {
     }
 
 
-    @DeleteMapping("/students/{id}")
-    public ResponseEntity<Integer> deleteStudentById(@PathVariable Integer id) {
-        boolean isRemoved = studentService.delete(id);
-        if (!isRemoved) {
-            LOGGER.info("Student not found with id {}", id);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        LOGGER.info("Student with #id {} has been deleted", id);
-        return new ResponseEntity<>(id, HttpStatus.OK);
-    }
+//    @DeleteMapping("/students/{id}")
+//    public ResponseEntity<Integer> deleteStudentById(@PathVariable Integer id) {
+//        boolean isRemoved = studentService.delete(id);
+//        if (!isRemoved) {
+//            LOGGER.info("Student not found with id {}", id);
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        LOGGER.info("Student with #id {} has been deleted", id);
+//        return new ResponseEntity<>(id, HttpStatus.OK);
+//    }
 
 
     @GetMapping("/students/{studentid}")

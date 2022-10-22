@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/fee")
-public class FeeController {
+public class FeeResource {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FeeController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FeeResource.class);
 
     @Autowired
     private FeeService feeService;
@@ -31,7 +31,7 @@ public class FeeController {
 
     @GetMapping("/studentId/{sid}")
     public List<Fee> getStudentFees(@PathVariable String sid) {
-        return feeService.findByStudentId(sid).stream().collect(Collectors.toList());
+        return feeService.findBySID(sid).stream().collect(Collectors.toList());
     }
 
     @PutMapping("/fees/{id}")
@@ -48,8 +48,8 @@ public class FeeController {
         }
     }
 
-    @PutMapping("/fees/{id}")
-    public Fee payFee(@RequestBody Fee fee, @PathVariable Integer id) {
-        return updateFee(fee, id);
-    }
+//    @PutMapping("/fees/{id}")
+//    public Fee payFee(@RequestBody Fee fee, @PathVariable Integer id) {
+//        return updateFee(fee, id);
+//    }
 }
