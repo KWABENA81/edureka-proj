@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: APIGATEWAY
+    name: API-GATEWAY
   cloud:
     gateway:
       discovery.locator:

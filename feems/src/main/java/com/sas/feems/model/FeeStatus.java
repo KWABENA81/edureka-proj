@@ -3,7 +3,7 @@ package com.sas.feems.model;
 public enum FeeStatus {
     FULL,
     PARTIAL,
-    DEFAULTED,
+    DEFAULT,
     NONE;
 
     String getStatus() {
@@ -13,8 +13,8 @@ public enum FeeStatus {
                 status = "full";
             case PARTIAL:
                 status = "partial";
-            case DEFAULTED:
-                status = "defaulted";
+            case DEFAULT:
+                status = "default";
             case NONE:
                 status = "none";
         }
