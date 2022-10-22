@@ -1,16 +1,18 @@
 package com.sas.feems.model;
 
 public enum FeeType {
-    TUITION, BOARDING;
+    TUITION, EXTRACURRICULAR,NONE;
 
     String getType() {
-        String type = null;
+        String ftype = null;
         switch (this) {
             case TUITION:
-                type = "tuition";
-            case BOARDING:
-                type = "boarding";
+                ftype = "tuition";
+            case EXTRACURRICULAR:
+                ftype = "extra-curricular";
+            case NONE:
+                ftype = "none";
         }
-        return type;
+        return ftype;
     }
-    }
+}
