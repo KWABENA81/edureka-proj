@@ -1,10 +1,10 @@
-package com.sas.registrationservice;
+package com.sas.registerservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RegistrationServiceApplicationTests {
+class RegisterServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

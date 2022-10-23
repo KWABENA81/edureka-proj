@@ -11,9 +11,9 @@
         <module name="apigateway" />
         <module name="studentms-client" />
         <module name="config-server" />
+        <module name="register-service" />
         <module name="payment-service" />
         <module name="studentms" />
-        <module name="registration-service" />
         <module name="eureka-server" />
         <module name="service-registry" />
         <module name="cloud-gateway" />
@@ -28,7 +28,7 @@
       <module name="feems" target="11" />
       <module name="oauth-server" target="11" />
       <module name="payment-service" target="11" />
-      <module name="registration-service" target="11" />
+      <module name="register-service" target="11" />
       <module name="service-registry" target="11" />
       <module name="studentms" target="11" />
       <module name="studentms-client" target="11" />
@@ -43,7 +43,7 @@
       <module name="feems" options="-parameters" />
       <module name="oauth-server" options="-parameters" />
       <module name="payment-service" options="-parameters" />
-      <module name="registration-service" options="-parameters" />
+      <module name="register-service" options="-parameters" />
       <module name="service-registry" options="-parameters" />
       <module name="studentms" options="-parameters" />
       <module name="studentms-client" options="-parameters" />

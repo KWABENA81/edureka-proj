@@ -11,7 +11,7 @@ spring:
 #        web-allow-others: false
 
   application:
-    name: REGISTRATION-SERVICE
+    name: REGISTER-SERVICE
 
 #  datasource:
 #    url: "jdbc:h2:mem:feedb"

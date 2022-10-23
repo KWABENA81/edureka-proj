@@ -1,20 +1,18 @@
-package com.sas.registrationservice;
+package com.sas.registerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-//@ComponentScan
 @EnableEurekaClient
-public class RegistrationServiceApplication {
+public class RegisterServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RegistrationServiceApplication.class, args);
+		SpringApplication.run(RegisterServiceApplication.class, args);
 	}
 
 	@Bean
