@@ -11,16 +11,24 @@
         <module name="apigateway" />
         <module name="studentms-client" />
         <module name="config-server" />
+        <module name="register-service" />
+        <module name="payment-service" />
         <module name="studentms" />
         <module name="eureka-server" />
         <module name="service-registry" />
+        <module name="cloud-gateway" />
+        <module name="oauth-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="apigateway" target="11" />
+      <module name="cloud-gateway" target="11" />
       <module name="config-server" target="17" />
       <module name="eureka-server" target="11" />
       <module name="feems" target="11" />
+      <module name="oauth-server" target="11" />
+      <module name="payment-service" target="11" />
+      <module name="register-service" target="11" />
       <module name="service-registry" target="11" />
       <module name="studentms" target="11" />
       <module name="studentms-client" target="11" />
@@ -29,9 +37,13 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="apigateway" options="-parameters" />
+      <module name="cloud-gateway" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="feems" options="-parameters" />
+      <module name="oauth-server" options="-parameters" />
+      <module name="payment-service" options="-parameters" />
+      <module name="register-service" options="-parameters" />
       <module name="service-registry" options="-parameters" />
       <module name="studentms" options="-parameters" />
       <module name="studentms-client" options="-parameters" />
