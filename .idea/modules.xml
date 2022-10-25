@@ -8,9 +8,11 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/edureka-proj.iml" filepath="$PROJECT_DIR$/.idea/edureka-proj.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/feems/feems.iml" filepath="$PROJECT_DIR$/feems/feems.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jwt-service/jwt-service.iml" filepath="$PROJECT_DIR$/jwt-service/jwt-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kafka-producer/kafka-producer.iml" filepath="$PROJECT_DIR$/kafka-producer/kafka-producer.iml" />
       <module fileurl="file://$PROJECT_DIR$/oauth-server/oauth-server.iml" filepath="$PROJECT_DIR$/oauth-server/oauth-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/registration-service/register-service.iml" filepath="$PROJECT_DIR$/registration-service/register-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/register-service/register-service.iml" filepath="$PROJECT_DIR$/register-service/register-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-registry/service-registry.iml" filepath="$PROJECT_DIR$/service-registry/service-registry.iml" />
       <module fileurl="file://$PROJECT_DIR$/studentms/studentms.iml" filepath="$PROJECT_DIR$/studentms/studentms.iml" />
       <module fileurl="file://$PROJECT_DIR$/studentms-client/studentms-client.iml" filepath="$PROJECT_DIR$/studentms-client/studentms-client.iml" />

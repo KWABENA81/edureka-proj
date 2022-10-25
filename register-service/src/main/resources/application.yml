@@ -10,6 +10,9 @@ spring:
 #        trace: false
 #        web-allow-others: false
 
+  main:
+    web-application-type: reactive
+
   application:
     name: REGISTER-SERVICE
 
