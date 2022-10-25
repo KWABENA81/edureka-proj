@@ -1,0 +1,22 @@
+server:
+  port: 8095
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:userDB
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+
+
+app:
+  jwttoken:
+    message: 'Login Successful'
+  controller:
+    exception:
+      message1: 'Id and Password Empty'
+      message2: 'Id and Password not found'
+      message3: 'Id and Password Invalid'

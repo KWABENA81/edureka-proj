@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="FEEDB" uuid="28e4393c-50a3-4e4f-bf7d-daee0d58faba">
+    <data-source source="LOCAL" name="feedb" uuid="e0ad3ada-ed26-4aeb-9801-7f40abfa30a4">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:mem:feedb</jdbc-url>
+      <jdbc-url>jdbc:h2:file:../ms-assignments/data/feedb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="STUDENTDB" uuid="86ad8b22-f175-4b8a-847d-a5684f11c5ad">
+    <data-source source="LOCAL" name="userDB" uuid="6bbc11c5-3720-47df-9686-bfe7bf464390">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:mem:studentdb</jdbc-url>
+      <jdbc-url>jdbc:h2:mem:userDB</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
