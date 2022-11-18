@@ -30,7 +30,7 @@ public class StudentController {
         return ResponseEntity.ok().body(studentService.getStudents());
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/student/{id}")
     public ResponseEntity<Student> findStudentById(@PathVariable Long id) {
         Student studentOpt = studentService.findById(id);
         if (studentOpt != null) {
@@ -42,7 +42,7 @@ public class StudentController {
     }
 
 
-    @GetMapping("/students/{studentid}")
+    @GetMapping("/student/{studentid}")
     public ResponseEntity<Student> findByStudentId(@PathVariable String studentid) {
         Student student = studentService.findByStudentId(studentid);
         if (student != null) {
@@ -59,7 +59,7 @@ public class StudentController {
         return ResponseEntity.created(new URI(studentSaved.getId().toString())).body(studentSaved);
     }
 
-    @PutMapping("/students/{id}")
+    @PutMapping("/student/{id}")
     public Student updateStudent(@RequestBody Student student, @PathVariable Long id) {
         Student student_db = studentService.findById(id);
         if (student_db != null) {
