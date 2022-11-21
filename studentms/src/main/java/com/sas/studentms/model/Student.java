@@ -4,34 +4,42 @@ package com.sas.studentms.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
 @Data
+@Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "STUDENT")
 public class Student implements Comparable<Student> {
-    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @SequenceGenerator(
+            name = "student_id_sequence",
+            sequenceName = "student_id_sequence"
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "student_id_sequence"
+    )
+//    @Column(name = "ID", nullable = false)
     private Long id;
-    @Column(name = "FIRSTNAME", nullable = false, length = 100)
+    //  @Column(name = "FIRSTNAME", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "LASTNAME", nullable = false, length = 100)
+    //   @Column(name = "LASTNAME", nullable = false, length = 100)
     private String lastName;
 
-    @Column(name = "STUDENTID", nullable = false, unique = true, length = 30)
+    //  @Column(name = "STUDENTID", nullable = false, unique = true, length = 30)
     private String studentId;
 
-    @Column(name = "USERNAME", nullable = false, unique = true, length = 10)
+    //   @Column(name = "USERNAME", nullable = false, unique = true, length = 10)
     private String username;
 
-    @Column(name = "PASSWD", nullable = false, length = 512)
+    //  @Column(name = "PASSWD", nullable = false, length = 512)
     private String password;
 
 

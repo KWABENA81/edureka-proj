@@ -3,5 +3,5 @@ server:
 
 spring:
   application:
-    name: OAUTH2-SERVER
+    name: oauth2-server
 

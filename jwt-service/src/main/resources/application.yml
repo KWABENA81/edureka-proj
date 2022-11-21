@@ -12,11 +12,16 @@ spring:
       enabled: true
 
 
+
 app:
   jwttoken:
     message: 'Login Successful'
+
   controller:
     exception:
       message1: 'Id and Password Empty'
       message2: 'Id and Password not found'
       message3: 'Id and Password Invalid'
+
+  jwt:
+    secret: secret

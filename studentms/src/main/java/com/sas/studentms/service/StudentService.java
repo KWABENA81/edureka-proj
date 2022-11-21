@@ -1,13 +1,12 @@
 package com.sas.studentms.service;
 
-import ch.qos.logback.core.encoder.EchoEncoder;
+
 import com.sas.studentms.model.Enroll;
 import com.sas.studentms.model.Student;
 import com.sas.studentms.repo.EnrollRepository;
 import com.sas.studentms.repo.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,12 +26,8 @@ import java.util.Optional;
 @Transactional
 public class StudentService implements IStudentService, UserDetailsService {
 
-    //@Autowired
-    private final StudentRepository studentRepository;
-
-    //@Autowired
+     private final StudentRepository studentRepository;
     private final EnrollRepository enrollRepository;
-    // @Autowired
     private final PasswordEncoder passwordEncoder;
 
 
@@ -106,7 +101,6 @@ public class StudentService implements IStudentService, UserDetailsService {
 //    public Student create(Student student) {
 //        return (student.getId() == null) ? studentRepository.save(student) : null;
 //    }
-
 //    @Override
 //    public Student update(Student student) {
 //        Optional<Student> studentOptional = studentRepository.findById(student.getId());
@@ -120,13 +114,10 @@ public class StudentService implements IStudentService, UserDetailsService {
 //        } else
 //            return studentOptional.orElseThrow();
 //    }
-
-
 //    @Override
 //    public boolean delete(Integer id) {
 //        return studentRepository.delete(id);
 //    }
-
 //    @Override
 //    public Set<Student> all() {
 //        return findAll().stream().collect(Collectors.toSet());

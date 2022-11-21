@@ -6,9 +6,6 @@ import com.sas.studentms.service.StudentService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -22,7 +19,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 public class StudentController {
-   // @Autowired
     private final StudentService studentService;
 
     @GetMapping("/students")
