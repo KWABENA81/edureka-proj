@@ -4,9 +4,13 @@ server:
 spring:
   datasource:
     url: jdbc:h2:mem:userDB
-    driver-class-name: org.h2.Driver
+    driverClassName: org.h2.Driver
     username: sa
     password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
   h2:
     console:
       enabled: true

@@ -1,0 +1,3 @@
+INSERT INTO USERS VALUES (2, 'Alice','pass123');
+INSERT INTO USERS VALUES (1, 'Alex','pass123');
+INSERT INTO USERS VALUES (3, 'sas','pass123');
