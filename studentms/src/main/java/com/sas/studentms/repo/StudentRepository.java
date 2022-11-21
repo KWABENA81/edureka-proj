@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, Integer> {
+public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT s FROM Student s WHERE s.firstName=(:firstName)")
     List<Student> findByFirstName(@Param("firstName") String firstName);
 
@@ -19,6 +19,9 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Query("SELECT s FROM Student s WHERE s.studentId=(:studentId)")
     Optional<Student> findByStudentId(@Param("studentId") String studentId);
+
+    @Query("SELECT s FROM Student s WHERE s.username=(:username)")
+    Student findByStudentUsername(String username);
 
 //    boolean delete(Integer id);
 }

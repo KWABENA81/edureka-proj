@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -26,18 +27,25 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("candy")
-                .secret("123")
-                .authorizedGrantTypes("client_credentials", "password", "refresh_token")
-                .scopes("read");
+                .withClient("client")
+                .secret("secret").authorizedGrantTypes("client_credentials","password","refresh_token")
+                                .scopes("read");
 
+//          Spring doc example
+//        withClient("first-client")
+//                .secret(passwordEncoder().encode("noonewillguess"))
+//                .scopes(("resource:read"))
+//                .authorizedGrantTypes("authorization_code")
+//                .redirectUris("http://localhost:8081/oauth/login/client-app");
     }
 
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.userDetailsService(userDetailsService).authenticationManager(authenticationManager)
-                .accessTokenConverter(jwtAccessTokenConverter()).tokenStore(jwtTokenStore());
+        endpoints.userDetailsService(userDetailsService)
+                .authenticationManager(authenticationManager)
+                .accessTokenConverter(jwtAccessTokenConverter())
+                .tokenStore(jwtTokenStore());
     }
 
     @Bean
@@ -56,12 +64,12 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
         accessTokenConverter.setSigningKey("123456789012345678901234567890AB");
-
         return accessTokenConverter;
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        //return NoOpPasswordEncoder.getInstance();
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }

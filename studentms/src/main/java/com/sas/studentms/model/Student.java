@@ -1,54 +1,50 @@
 package com.sas.studentms.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
+@Data
+@Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "STUDENT")
 public class Student implements Comparable<Student> {
-    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
-    private Integer id;
-    @Column(name = "FIRSTNAME", nullable = false, length = 100)
+    @SequenceGenerator(
+            name = "student_id_sequence",
+            sequenceName = "student_id_sequence"
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "student_id_sequence"
+    )
+//    @Column(name = "ID", nullable = false)
+    private Long id;
+    //  @Column(name = "FIRSTNAME", nullable = false, length = 100)
     private String firstName;
-    @Column(name = "LASTNAME", nullable = false, length = 100)
+
+    //   @Column(name = "LASTNAME", nullable = false, length = 100)
     private String lastName;
-    @Column(name = "STUDENTID", nullable = false, unique = true, length = 30)
+
+    //  @Column(name = "STUDENTID", nullable = false, unique = true, length = 30)
     private String studentId;
 
-    public Integer getId() {
-        return id;
-    }
+    //   @Column(name = "USERNAME", nullable = false, unique = true, length = 10)
+    private String username;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    //  @Column(name = "PASSWD", nullable = false, length = 512)
+    private String password;
 
-    public String getLastName() {
-        return lastName;
-    }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Enroll> enrollments;
 
     @Override
     public int compareTo(Student st) {

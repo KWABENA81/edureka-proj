@@ -2,19 +2,17 @@ package com.sas.feems.api;
 
 import com.sas.feems.model.Fee;
 import com.sas.feems.service.FeeService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
-@RequestMapping("/fee")
-public class FeeResource {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(FeeResource.class);
+@RequestMapping("api/v1/fees")
+public class FeeController {
 
     @Autowired
     private FeeService feeService;

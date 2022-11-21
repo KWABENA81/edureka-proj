@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ms
+      PGDATA: /data/postgres
+    volumes:    
+      - postgres:/data/postgres
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    command:  -p 5432
+    networks:
+      - db_networks
+    #restart: unless-stopped      #  for prod
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@apatase.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - "5050:80"
+    networks:
+          - db_networks
+    #restart: unless-stopped      #  for prod
+    depends_on:
+      - postgres_container
+
+
+networks:
+  db_networks:
+    external: true
+    driver: bridge
+
+
+volumes:
+  postgres:
+  pgadmin:
+
+

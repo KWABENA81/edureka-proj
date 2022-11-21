@@ -1,6 +1,7 @@
 package com.sas.oauthserver;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,18 +13,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
-public class WebSecConfig extends WebSecurityConfigurerAdapter {
+@Slf4j
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public UserDetailsService uds() {
+    public UserDetailsService userDetailsService() {
         UserDetails john = User.withUsername("john")
                 .password("123")
                 .authorities("read")
                 .build();
-
-        InMemoryUserDetailsManager udm = new InMemoryUserDetailsManager();
-        udm.createUser(john);
-        return udm;
+log.info(" WebSecurityConfig ");
+        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
+        userDetailsManager.createUser(john);
+        return userDetailsManager;
     }
 
     @Bean
