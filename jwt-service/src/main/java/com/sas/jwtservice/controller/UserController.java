@@ -4,6 +4,7 @@ import com.sas.jwtservice.config.JwtGeneratorInterface;
 import com.sas.jwtservice.exception.UserNotFoundException;
 import com.sas.jwtservice.model.User;
 import com.sas.jwtservice.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Slf4j
 @RequestMapping("api/v1/user")
 public class UserController {
     private UserService userService;
@@ -38,14 +40,18 @@ public class UserController {
     public ResponseEntity<?> loginUser(@RequestBody User user) {
         try {
             if (user.getUserName() == null || user.getPassword() == null) {
+                log.error("UserName or Password is Empty -- 43");
                 throw new UserNotFoundException("UserName or Password is Empty");
             }
             User userData = userService.getUserByNameAndPassword(user.getUserName(), user.getPassword());
             if (userData == null) {
+                log.error("UserName or Password is Invalid -- 48");
                 throw new UserNotFoundException("UserName or Password is Invalid");
             }
+            log.error("UserName or Password is Invalid --51");
             return new ResponseEntity<>(jwtGenerator.generateToken(user), HttpStatus.OK);
         } catch (UserNotFoundException e) {
+            log.error("UserName or Password is Invalid   -- 54 "+e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }

@@ -33,8 +33,8 @@ public class StudentService implements IStudentService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Student studentUser = studentRepository.findByStudentUsername(username);
-        if (studentUser == null) {
+        Student student = studentRepository.findByStudentUsername(username);
+        if (student == null) {
             log.error("student not found");
             throw new UsernameNotFoundException("Student  Not found");
         } else {
@@ -43,7 +43,7 @@ public class StudentService implements IStudentService, UserDetailsService {
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ENROLLED_STUDENT"));
         return new org.springframework.security.core.userdetails
-                .User(studentUser.getUsername(), studentUser.getPassword(), authorities);
+                .User(student.getUsername(), student.getPassword(), authorities);
     }
 
 

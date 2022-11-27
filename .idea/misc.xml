@@ -17,6 +17,9 @@
         <option value="$PROJECT_DIR$/register-service/pom.xml" />
         <option value="$PROJECT_DIR$/kafka-producer/pom.xml" />
         <option value="$PROJECT_DIR$/jwt-service/pom.xml" />
+        <option value="$PROJECT_DIR$/student-clientms/pom.xml" />
+        <option value="$PROJECT_DIR$/student-client/pom.xml" />
+        <option value="$PROJECT_DIR$/student-client/src/test/java/com/sas/studentclient/pom.xml" />
       </list>
     </option>
   </component>

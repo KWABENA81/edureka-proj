@@ -1,7 +1,10 @@
 server:
   port: 8095
 
+
 spring:
+  application:
+    name: jwt-service
   datasource:
     url: jdbc:h2:mem:userDB
     driverClassName: org.h2.Driver
@@ -15,8 +18,6 @@ spring:
     console:
       enabled: true
 
-
-
 app:
   jwttoken:
     message: 'Login Successful'
@@ -27,5 +28,4 @@ app:
       message2: 'Id and Password not found'
       message3: 'Id and Password Invalid'
 
-  jwt:
-    secret: secret
+  jwt.secret: secret

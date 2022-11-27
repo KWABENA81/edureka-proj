@@ -57,14 +57,14 @@ public class StudentController {
 
     @PutMapping("/student/{id}")
     public Student updateStudent(@RequestBody Student student, @PathVariable Long id) {
-        Student student_db = studentService.findById(id);
-        if (student_db != null) {
+        Student student_User_db = studentService.findById(id);
+        if (student_User_db != null) {
 
-            student_db.setFirstName(student.getFirstName());
-            student_db.setLastName(student.getLastName());
-            student_db.setStudentId(student.getStudentId());
+            student_User_db.setFirstName(student.getFirstName());
+            student_User_db.setLastName(student.getLastName());
+            student_User_db.setStudentId(student.getStudentId());
 
-            return studentService.save(student_db);
+            return studentService.save(student_User_db);
         } else {
             student.setId(id);
             return studentService.save(student);

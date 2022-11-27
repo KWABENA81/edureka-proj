@@ -25,23 +25,17 @@ public class Student implements Comparable<Student> {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "student_id_sequence"
     )
-//    @Column(name = "ID", nullable = false)
     private Long id;
-    //  @Column(name = "FIRSTNAME", nullable = false, length = 100)
+
     private String firstName;
 
-    //   @Column(name = "LASTNAME", nullable = false, length = 100)
     private String lastName;
 
-    //  @Column(name = "STUDENTID", nullable = false, unique = true, length = 30)
     private String studentId;
 
-    //   @Column(name = "USERNAME", nullable = false, unique = true, length = 10)
     private String username;
 
-    //  @Column(name = "PASSWD", nullable = false, length = 512)
     private String password;
-
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Enroll> enrollments;
