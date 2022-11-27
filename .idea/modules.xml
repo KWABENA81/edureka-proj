@@ -14,8 +14,8 @@
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/register-service/register-service.iml" filepath="$PROJECT_DIR$/register-service/register-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-registry/service-registry.iml" filepath="$PROJECT_DIR$/service-registry/service-registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/student-client/src/test/java/com/sas/studentclient/student-client.iml" filepath="$PROJECT_DIR$/student-client/src/test/java/com/sas/studentclient/student-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/studentms/studentms.iml" filepath="$PROJECT_DIR$/studentms/studentms.iml" />
-      <module fileurl="file://$PROJECT_DIR$/studentms-client/studentms-client.iml" filepath="$PROJECT_DIR$/studentms-client/studentms-client.iml" />
     </modules>
   </component>
 </project>

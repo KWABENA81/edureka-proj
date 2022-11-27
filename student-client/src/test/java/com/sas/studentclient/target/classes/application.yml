@@ -1,14 +1,16 @@
 server:
-  port: 8095
-
+  port: 8082
 
 spring:
+
   application:
-    name: jwt-service
+    name: student-client
+
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/users-db
+    url: jdbc:postgresql://127.0.0.1:5432/studentclients-db
     username: 'postgres'
     password: 'password'
+
   jpa:
     defer-datasource-initialization: true
     hibernate:
@@ -20,14 +22,13 @@ spring:
         format_sql: 'true'
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-app:
-  jwttoken:
-    message: 'Login Successful'
 
-  controller:
-    exception:
-      message1: 'Id and Password Empty'
-      message2: 'Id and Password not found'
-      message3: 'Id and Password Invalid'
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
-  jwt.secret: secret
+#  instance:
+#    hostname: localhost

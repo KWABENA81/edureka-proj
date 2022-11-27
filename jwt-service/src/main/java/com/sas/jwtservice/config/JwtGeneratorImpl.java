@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Service
 public class JwtGeneratorImpl implements JwtGeneratorInterface {
-    @Value("${jwt.secret}")
+    @Value("secret")    //("${jwt.secret}")
     private String secret;
     @Value("${app.jwttoken.message}")
     private String message;

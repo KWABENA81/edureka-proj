@@ -18,12 +18,12 @@ spring:
           filters:
             - RewritePath= /dummy-studentms/(?<path>.*), /$\{path}
 
-        - id: studentmsclientid
-          uri: lb://STUDENTMS-CLIENT
+        - id: studentclientid
+          uri: lb://STUDENT-CLIENT
           predicates:
-            - Path= /dummy-studentms-client/**
+            - Path= /dummy-student-client/**
           filters:
-            - RewritePath= /dummy-studentms-client/(?<path>.*), /$\{path}
+            - RewritePath= /dummy-student-client/(?<path>.*), /$\{path}
 
 
 

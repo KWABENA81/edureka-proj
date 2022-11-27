@@ -1,7 +1,6 @@
 package com.sas.studentms.repo;
 
 import com.sas.studentms.model.Enroll;
-import com.sas.studentms.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
