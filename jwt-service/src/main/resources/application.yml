@@ -6,19 +6,17 @@ spring:
   application:
     name: jwt-service
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/users-db
-    username: 'postgres'
-    password: 'password'
+    url: jdbc:h2:mem:userDB
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+
   jpa:
-    defer-datasource-initialization: true
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    open-in-view: true
-    properties:
-      hibernate:
-        format_sql: 'true'
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true
 
 app:
   jwttoken:
