@@ -4,7 +4,7 @@ package com.sas.studentms.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "STUDENT")
+@Table(name = "STUDENT_TB")
 public class Student implements Comparable<Student> {
     private static final long serialVersionUID = 1L;
     @Id

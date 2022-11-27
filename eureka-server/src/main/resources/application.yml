@@ -7,7 +7,7 @@ spring:
   #      enabled: true
   #
   application:
-    name: EUREKA-SERVER
+    name: eureka-server
 #
 eureka:
   client:

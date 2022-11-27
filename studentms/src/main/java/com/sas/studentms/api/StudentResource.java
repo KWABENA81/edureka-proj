@@ -5,7 +5,6 @@ import com.sas.studentms.service.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,13 +21,8 @@ public class StudentResource {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("/studentGetTest")
-    public String getStudentResourceTest() {
-        return "Running Student resource get mapping test";
-    }
-
-    @GetMapping("/students")
-    public List<Student> getAllStudents() {
+    @GetMapping("/allStudents")
+    public List<Student> allStudents() {
         return studentService.findAll().stream().collect(Collectors.toList());
     }
 
